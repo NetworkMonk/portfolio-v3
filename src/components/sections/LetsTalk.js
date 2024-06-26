@@ -53,12 +53,12 @@ export default function LetsTalk() {
                       key={index}
                       href={contact.link}
                       rel="noreferrer"
-                      className="rounded-lg p-5 bg-brand-platinum bg-opacity-15 hover:bg-opacity-100 hover:text-brand-black transition-all duration-300 in-up"
+                      className="rounded-lg p-5 bg-brand-platinum bg-opacity-15 hover:bg-opacity-100 hover:text-brand-black transition-all duration-300 in-up flex"
                       style={{ animationDelay: `${index / 4 + 2}s` }}
                     >
                       <FontAwesomeIcon
                         icon={contact.icon}
-                        className="h-6 w-6 inline-block mr-3 -mt-1"
+                        className="h-6 w-6 inline-block mr-3"
                       />
                       {contact.label}
                     </a>
