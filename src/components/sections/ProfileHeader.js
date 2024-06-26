@@ -1,3 +1,5 @@
+"use client";
+
 import Container from "@/components/common/Container";
 import Section from "@/components/common/Section";
 import Image from "next/image";
@@ -65,7 +67,15 @@ export default function ProfileHeader() {
                           className="mt-10 in-up-right"
                           style={{ animationDelay: "1.5s" }}
                         >
-                          <button className="bg-gradient-to-br from-orange-400 to-brand-orange text-white rounded px-5 py-3 hover:opacity-75 transition-opacity duration-300">
+                          <button
+                            className="bg-gradient-to-br from-orange-400 to-brand-orange text-white rounded px-5 py-3 hover:opacity-75 transition-opacity duration-300"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              document
+                                .getElementById("lets-talk")
+                                .scrollIntoView({ behavior: "smooth" });
+                            }}
+                          >
                             Let&apos;s talk
                           </button>
                         </div>
