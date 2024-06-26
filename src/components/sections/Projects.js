@@ -69,12 +69,6 @@ export default function Projects() {
     {
       name: "1st Leyton Scouts",
       summary: "Wordpress Website",
-      description: [
-        "I took on the build for the new White Stores website as E-Commerce and Development Director mid way through the project.",
-        "Working closely with our web development partner and our internal teams to deliver the site.",
-        "There were challenges with the build, the project was started multiple times. And there was a large exercise in making changes to our product data to prepare for the new site structure.",
-        "Ultimately the site was launch in Feb '24 and on budget and delivered a stable base for future development.",
-      ],
       image: "/img/scouts.png",
       background: "bg-gradient-to-br from-cyan-300 to-lime-600",
       benefit:
@@ -88,108 +82,110 @@ export default function Projects() {
       image: "/img/james-plant.png",
       background: "bg-gradient-to-br from-indigo-300 to-slate-600",
       benefit:
-        "This site! I needed to update my portfolio to include all recent project and fully reflect where I am at with my journey with web development and technology.",
+        "This site! I needed to update my portfolio to include all recent projects and fully reflect where I am at with my journey with web development and technology.",
       technologies: ["React", "Next.js", "Tailwind", "CSS"],
       link: "https://www.jamesplant.me",
     },
   ];
 
   return (
-    <Section>
-      <Container>
-        <div className="md:p-10">
-          <InView>
-            <h2
-              className={`${josefin.className} text-3xl tracking-wider in-up-right`}
-              style={{ animationDelay: "0.5s" }}
-            >
-              Projects
-            </h2>
-            <p
-              className="my-5 text-sm in-up-right text-gray-400"
-              style={{ animationDelay: "1s" }}
-            >
-              Some of the projects I&apos;ve had the pleasure of being a part of
-              during my 20 years in technology.
-            </p>
-          </InView>
-          <div className="flex flex-col gap-10 mt-10">
-            {projectList.map((project, projectIndex) => {
-              return (
-                <div key={projectIndex}>
-                  <InView>
-                    <div
-                      className={`rounded-xl shadow-xl bg-black p-5 flex flex-col md:flex-row in-up-right min-h-[400px] relative overflow-hidden ${project.background}`}
-                      style={{ animationDelay: "0.5s" }}
-                    >
-                      <div className="max-w-lg flex flex-col mt-auto p-3 md:p-10 md:order-2">
-                        <h3
-                          className={`${josefin.className} text-4xl font-semibold uppercase tracking-wide`}
-                        >
-                          {project.name}
-                        </h3>
-                        <p className="opacity-70 text-sm -mt-1 font-semibold tracking-wide uppercase">
-                          {project.summary}
-                        </p>
-                        <h4 className="text-xs font-bold tracking-wider uppercase mt-5">
-                          Summary
-                        </h4>
-                        <p className="text-sm">{project.benefit}</p>
-                        <h4 className="text-xs font-bold tracking-wider uppercase mt-5">
-                          Technologies Used
-                        </h4>
-                        <div>
-                          {project.technologies.map((tech, techIndex) => {
-                            return (
-                              <span
-                                key={techIndex}
-                                className="inline-block text-sm mr-3 mb-3"
-                              >
-                                {tech}
-                              </span>
-                            );
-                          })}
-                        </div>
-                      </div>
-                      <div className="flex-1 mt-auto p-3 md:p-10 md:order-1">
-                        {project.link && project.link !== "" && (
-                          <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="bg-gray-200 bg-opacity-30 text-white rounded px-5 py-3 hover:bg-opacity-50 transition-colors duration-300"
+    <div id="projects">
+      <Section>
+        <Container>
+          <div className="md:p-10">
+            <InView>
+              <h2
+                className={`${josefin.className} text-3xl tracking-wider in-up-right`}
+                style={{ animationDelay: "0.5s" }}
+              >
+                Projects
+              </h2>
+              <p
+                className="my-5 text-sm in-up-right text-gray-400"
+                style={{ animationDelay: "1s" }}
+              >
+                Some of the projects I&apos;ve had the pleasure of being a part
+                of during my 20 years in technology.
+              </p>
+            </InView>
+            <div className="flex flex-col gap-10 mt-10">
+              {projectList.map((project, projectIndex) => {
+                return (
+                  <div key={projectIndex}>
+                    <InView>
+                      <div
+                        className={`rounded-xl shadow-xl bg-black p-5 flex flex-col md:flex-row in-up-right md:min-h-[400px] relative overflow-hidden ${project.background}`}
+                        style={{ animationDelay: "0.5s" }}
+                      >
+                        <div className="max-w-xl flex flex-col p-3 md:p-10 md:order-2">
+                          <h3
+                            className={`${josefin.className} text-4xl font-semibold uppercase tracking-wide`}
                           >
-                            View
-                          </a>
+                            {project.name}
+                          </h3>
+                          <p className="opacity-70 text-sm -mt-1 font-semibold tracking-wide uppercase">
+                            {project.summary}
+                          </p>
+                          <h4 className="text-xs font-bold tracking-wider uppercase mt-5">
+                            Summary
+                          </h4>
+                          <p className="text-sm">{project.benefit}</p>
+                          <h4 className="text-xs font-bold tracking-wider uppercase mt-5">
+                            Technologies Used
+                          </h4>
+                          <div>
+                            {project.technologies.map((tech, techIndex) => {
+                              return (
+                                <span
+                                  key={techIndex}
+                                  className="inline-block text-sm mr-3 mb-3"
+                                >
+                                  {tech}
+                                </span>
+                              );
+                            })}
+                          </div>
+                        </div>
+                        <div className="flex-1 mt-auto p-3 md:p-10 md:order-1">
+                          {project.link && project.link !== "" && (
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="bg-gray-200 bg-opacity-30 text-white rounded px-5 py-3 hover:bg-opacity-50 transition-colors duration-300"
+                            >
+                              View
+                            </a>
+                          )}
+                        </div>
+                        {project.image && project.image !== "" && (
+                          <div
+                            className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none -z-10"
+                            style={{ perspective: "1000px" }}
+                          >
+                            <Image
+                              src={project.image}
+                              alt={project.name}
+                              width="1000"
+                              height="1000"
+                              className="object-cover w-full h-full opacity-10"
+                              style={{
+                                transform:
+                                  "rotateX(10deg) rotateY(10deg) scale(1.4)",
+                                filter: "blur(1px)",
+                              }}
+                            />
+                          </div>
                         )}
                       </div>
-                      {project.image && project.image !== "" && (
-                        <div
-                          className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none -z-10"
-                          style={{ perspective: "1000px" }}
-                        >
-                          <Image
-                            src={project.image}
-                            alt={project.name}
-                            width="1000"
-                            height="1000"
-                            className="object-cover w-full h-full opacity-10"
-                            style={{
-                              transform:
-                                "rotateX(10deg) rotateY(10deg) scale(1.4)",
-                              filter: "blur(1px)",
-                            }}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </InView>
-                </div>
-              );
-            })}
+                    </InView>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </Container>
-    </Section>
+        </Container>
+      </Section>
+    </div>
   );
 }

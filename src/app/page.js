@@ -1,4 +1,7 @@
+import Nav from "@/components/common/Nav";
 import Achievements from "@/components/sections/Achievements";
+import Footer from "@/components/sections/Footer";
+import LetsTalk from "@/components/sections/LetsTalk";
 import ProfileHeader from "@/components/sections/ProfileHeader";
 import Projects from "@/components/sections/Projects";
 import Technologies from "@/components/sections/Technologies";
@@ -16,11 +19,14 @@ export default function Home() {
           <stop offset="100%" stopColor="#028090" />
         </linearGradient>
       </svg>
-
+    
+      <Nav />
       <ProfileHeader />
       <Projects />
       <Achievements />
       <Technologies />
+      <LetsTalk />
+      <Footer />
     </page>
   );
 }

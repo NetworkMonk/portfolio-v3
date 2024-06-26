@@ -6,7 +6,7 @@ export default function Blocks() {
     [0.2, 0.8, 1.4, 2, 2.6],
     [0.3, 0.9, 1.5],
     [0.4, 1, 1.6, 2.2, 2.8, 3.5],
-    [0.5, 1.1, 1.7, 2.3, 2.9, 3.6, 4.2],
+    [0.5, 1.1, 1.7, 2.3, 2.9, 3.6, 4],
   ];
 
   // Build a column of blocks, animate each block into the correct position and opacity.
