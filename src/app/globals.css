@@ -3,17 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 16, 28, 36;
+  --background-end-rgb: 6, 8, 12;
 }
 
 body {
@@ -30,4 +22,90 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@keyframes animation-block {
+  0% {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.animated-block {
+  animation-name: animation-block;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animation-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.in-right {
+  animation-name: animation-in-right;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+@keyframes animation-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.in-up {
+  animation-name: animation-in-up;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+@keyframes animation-in-up-right {
+  0% {
+    opacity: 0;
+    transform: translate(-50px, 50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+.in-up-right {
+  animation-name: animation-in-up-right;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.in-view .in-up,
+.in-view .in-right,
+.in-view .in-up-right {
+  animation-play-state: running;
 }
