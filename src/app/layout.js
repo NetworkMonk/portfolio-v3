@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { montserrat } from "./fonts";
 import "./globals.css";
 
@@ -13,6 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${montserrat.className} min-h-screen`}>{children}</body>
       <GoogleAnalytics gaId="G-4Z9EX7307B" />
+      <GoogleTagManager gtmId="GTM-K56Z935N" />
     </html>
   );
 }
