@@ -4,15 +4,10 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
 } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { josefin } from "@/app/fonts";
-import Link from "next/link";
 
 export default function Nav() {
   return (
@@ -61,6 +56,18 @@ export default function Nav() {
                   </a>
                 </div>
                 <div className="hidden md:ml-6 md:flex md:space-x-8">
+                  <a
+                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-300 hover:border-gray-100 hover:text-gray-100 transition-all duration-300 cursor-pointer"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("testimonials")
+                        .scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    Testimonials
+                  </a>
+
                   <a
                     className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-300 hover:border-gray-100 hover:text-gray-100 transition-all duration-300 cursor-pointer"
                     onClick={(e) => {

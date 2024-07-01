@@ -5,6 +5,7 @@ import LetsTalk from "@/components/sections/LetsTalk";
 import ProfileHeader from "@/components/sections/ProfileHeader";
 import Projects from "@/components/sections/Projects";
 import Technologies from "@/components/sections/Technologies";
+import Testimonials from "@/components/sections/Testimonials";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
     
       <Nav />
       <ProfileHeader />
+      <Testimonials />
       <Projects />
       <Achievements />
       <Technologies />
