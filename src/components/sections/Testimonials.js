@@ -3,38 +3,40 @@ import InView from "../animated/InView";
 import Container from "../common/Container";
 import Section from "../common/Section";
 import { josefin } from "@/app/fonts";
-import { faCircleUser, faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
-export default function Testimonials() {
-  const reviews = [
+const getTestimonials = async () => {
+  const response = await fetch(
+    "https://api-eu-west-2.hygraph.com/v2/cly38j74i00f307w7tb295z6r/master",
     {
-      author: "James W",
-      position: "CEO",
-      company: "036 Group Company",
-      text: [
-        "Having employed and worked with James for the past 3.5 years I can not speak highly enough of him. His personality, quality of work, people skills and genuine care for what he does are exemplary.",
-        "He will undoubtedly be an asset to any company and I thoroughly recommend contacting him. James, it has been a pleasure working with you and I know we will stay in touch.",
-      ],
-    },
-    {
-      author: "Damian D",
-      position: "Group Operations Director",
-      company: "036 Group Company",
-      text: [
-        "Having worked with James Plant from both sides of the fence (Agency & In-House) I cannot recommend him enough for his technical abilities.",
-        "If you're in the market for someone with a strong technical background and aptitude at a Senior Level you should check him out!",
-        "There is no doubt that James has curated and contributed to many of our robust systems and processes within our group allowing us to grow and evolve as the group has over his time with us.",
-      ],
-    },
-    {
-      author: "Mark T",
-      position: "COO",
-      company: "Cult Furniture",
-      text: [
-        "James is excellent at what he does and he does it with complete integrity and dedication. A huge opportunity for a business to get someone that will make their business better.",
-      ],
-    },
-  ];
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      next: { revalidate: 3600 },
+      body: JSON.stringify({
+        query: `{
+          testimonials {
+            id
+            position
+            company
+            content
+            publishedAt
+            author
+          }
+        }
+      `,
+      }),
+    }
+  );
+
+  const { data } = await response.json();
+  return data.testimonials;
+};
+
+export default async function Testimonials() {
+  const reviews = await getTestimonials();
 
   return (
     <div id="testimonials">
@@ -61,7 +63,7 @@ export default function Testimonials() {
                     <div key={reviewIndex} className="lg:w-1/3 p-3">
                       <figure
                         className="bg-brand-platinum rounded-lg p-5 bg-opacity-5 h-full flex flex-col in-up"
-                        style={{animationDelay: `${reviewIndex / 3 + 2}s`}}
+                        style={{ animationDelay: `${reviewIndex / 3 + 2}s` }}
                       >
                         <blockquote className="flex-1">
                           <svg
@@ -72,7 +74,7 @@ export default function Testimonials() {
                           >
                             <path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z" />
                           </svg>
-                          {review.text.map((text, index) => {
+                          {review.content.split(/\n/g).map((text, index) => {
                             return (
                               <p key={index} className="text-sm mb-3">
                                 {text}
@@ -89,7 +91,7 @@ export default function Testimonials() {
                           </div>
                           <div>
                             <p>{review.author}</p>
-                            <p className="uppercase text-sm text-gray-400">
+                            <p className="text-xs text-gray-400 font-medium">
                               {review.position} - {review.company}
                             </p>
                           </div>
