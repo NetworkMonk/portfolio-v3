@@ -52,7 +52,7 @@ export default async function Achievements() {
                 In addition to all of my public projects above, I have worked on
                 many other bespoke applications and business projects.
               </p>
-              <div className="grid md:grid-cols-2 gap-10 gap-y-20 mt-10">
+              <div className="grid md:grid-cols-2 gap-10 mt-10">
                 {achievementList
                   .sort((a, b) => a.displayOrder - b.displayOrder)
                   .map((achievement, aIndex) => {
@@ -60,7 +60,7 @@ export default async function Achievements() {
                       <div
                         key={aIndex}
                         className="in-up-right"
-                        style={{ animationDelay: `${aIndex / 2 + 1.5}s` }}
+                        style={{ animationDelay: `${aIndex / 4 + 2}s` }}
                       >
                         <div>
                           <h4
