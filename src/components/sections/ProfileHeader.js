@@ -6,6 +6,8 @@ import Image from "next/image";
 import { josefin } from "@/app/fonts";
 import Blocks from "../animated/Blocks";
 import InView from "../animated/InView";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProfileHeader() {
   return (
@@ -15,19 +17,19 @@ export default function ProfileHeader() {
           <div id="home">
             <InView>
               <div className="relative">
-                <div className="md:grid grid-cols-2 gap-5">
-                  <div className="h-full flex flex-col md:items-center md:p-5 md:order-2">
+                <div className="lg:grid grid-cols-2 gap-5">
+                  <div className="h-full flex flex-col lg:items-center md:p-5 lg:order-2">
                     <div className="flex-1 flex items-center in-up">
                       <Image
                         src="/img/cartoon-profile-image.png"
                         alt="This is me! James!"
-                        className="h-48 w-48 md:mb-24"
+                        className="h-48 w-48 lg:mb-24"
                         width="256"
                         height="256"
                       />
                     </div>
                   </div>
-                  <div className="h-full flex flex-col items-center md:p-10 md:order-1">
+                  <div className="h-full flex flex-col items-center md:px-10 lg:py-10 lg:order-1">
                     <div className="flex-1 flex items-center py-20 relative">
                       <div>
                         <h1
@@ -78,6 +80,16 @@ export default function ProfileHeader() {
                           >
                             Let&apos;s talk
                           </button>
+                          <a
+                            href="https://eu-west-2.graphassets.com/cly38j7gjn7aw07l8dd2x8xpm/cly61vmzd1c7h07mm2ozslvrz?dl=true&_gl=1*1s0zcn0*_gcl_aw*R0NMLjE3MTk4NzEwNjAuQ2p3S0NBandwNG0wQmhCQUVpd0FzZGM0YUZGeUpFM3VMWjd1RXoyM21aVEs4WXRYbjM3bmxFYk5OLW0waHZybm5FeTlpdHFkN3IzT1VSb0NzMUVRQXZEX0J3RQ..*_gcl_au*MjQ1NjQ1ODU5LjE3MTk4NzEwNjA.*_ga*MTM4MjQ2MTIzOC4xNzE5ODcxMDYw*_ga_G6FYGSYGZ4*MTcyMDAyMzQxNC4zLjEuMTcyMDAyMzczOC42MC4wLjA."
+                            className="ml-3 bg-gradient-to-br from-zinc-400 to-zinc-600 text-white rounded px-5 py-3 hover:opacity-75 transition-opacity duration-300"
+                          >
+                            <FontAwesomeIcon
+                              icon={faDownload}
+                              className="mr-3 w-4 h-4"
+                            />
+                            Download my CV
+                          </a>
                         </div>
                       </div>
                     </div>

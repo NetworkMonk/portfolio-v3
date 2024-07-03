@@ -15,7 +15,7 @@ export default function Blocks() {
       return (
         <div key={blockIndex}>
           <span
-            className="bg-white block h-2 w-6 md:w-12 opacity-0 animated-block"
+            className="bg-white block h-2 w-6 lg:w-12 md:w-9 opacity-0 animated-block"
             style={{ animationDelay: `${block * 2 + 1}s` }}
           ></span>
         </div>
