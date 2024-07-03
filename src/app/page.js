@@ -8,6 +8,14 @@ import Technologies from "@/components/sections/Technologies";
 import Testimonials from "@/components/sections/Testimonials";
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    name: "James Plant | Portfolio",
+    image: "https://jamesplant.me/img/james-plant.png",
+    description:
+      "An experienced full stack web application developer and technology leader. 20 years in the world of technology. Available for work.",
+  };
+
   return (
     <page>
       <svg
@@ -20,7 +28,7 @@ export default function Home() {
           <stop offset="100%" stopColor="#028090" />
         </linearGradient>
       </svg>
-    
+
       <Nav />
       <ProfileHeader />
       <Testimonials />
@@ -29,6 +37,10 @@ export default function Home() {
       <Technologies />
       <LetsTalk />
       <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </page>
   );
 }
