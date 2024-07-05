@@ -25,6 +25,8 @@ body {
   }
 }
 
+@import "blog-post.css";
+
 @keyframes animation-block {
   0% {
     opacity: 0;

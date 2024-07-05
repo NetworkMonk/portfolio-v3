@@ -1,6 +1,12 @@
+import Container from "@/components/common/Container";
 import Nav from "@/components/common/Nav";
+import Section from "@/components/common/Section";
 import Footer from "@/components/sections/Footer";
 import { notFound } from "next/navigation";
+import { josefin } from "@/app/fonts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const getBlogPost = async (slug) => {
   const response = await fetch(
@@ -20,6 +26,13 @@ const getBlogPost = async (slug) => {
             slug
             summary
             displayStyle
+            thumbnailImage {
+              url
+            }
+            postContent {
+              html
+            }
+            youTubeEmbed
           }
         }
       `,
@@ -61,7 +74,39 @@ export default async function BlogPost({ params }) {
       </svg>
 
       <Nav currentPage="/blog" />
-      <h1>{blogPost.slug}</h1>
+      <Section>
+        <Container>
+          <div className="md:p-10">
+            <div className="mb-5 md:mb-10">
+              <Link
+                type="a"
+                href="/blog"
+                className="text-sm text-gray-400 hover:text-gray-200 cursor-pointer transition-colors duration-300"
+              >
+                <FontAwesomeIcon
+                  icon={faArrowLeft}
+                  className="inline-block w-3.5 h-3.5 mr-2"
+                />
+                Back to blog
+              </Link>
+            </div>
+            <h1 className={`${josefin.className} text-3xl tracking-wider`}>
+              {blogPost.name}
+            </h1>
+            <p className="text-sm text-gray-400">
+              {new Date(blogPost.publishDate).toLocaleDateString()}
+            </p>
+            {blogPost?.postContent?.html && (
+              <div
+                className="my-10 blog-post"
+                dangerouslySetInnerHTML={{
+                  __html: blogPost?.postContent?.html,
+                }}
+              ></div>
+            )}
+          </div>
+        </Container>
+      </Section>
       <Footer />
       <script
         type="application/ld+json"

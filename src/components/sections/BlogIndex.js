@@ -62,7 +62,7 @@ export default async function BlogIndex({ page }) {
       >
         <p className="text-2xl tracking-wide min-h-36 mb-5">{blog.name}</p>
         <p className="text-sm mt-auto mb-5">{blog.summary}</p>
-        <p className="text-right text-sm text-gray-400">{blog.publishDate}</p>
+        <p className="text-right text-sm text-gray-400">{new Date(blog.publishDate).toLocaleDateString()}</p>
       </Link>
     );
   };
@@ -73,9 +73,9 @@ export default async function BlogIndex({ page }) {
         <Container>
           <InView>
             <div className="md:p-10">
-              <h2 className={`${josefin.className} text-3xl tracking-wider`}>
+              <h1 className={`${josefin.className} text-3xl tracking-wider`}>
                 Blog Posts
-              </h2>
+              </h1>
               <p className="my-5 text-sm text-gray-400">
                 I post a lot about web technologies and development and I post a
                 combination of text and video guides.
