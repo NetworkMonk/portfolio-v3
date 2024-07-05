@@ -9,7 +9,7 @@ import {
 
 export default function Footer() {
   return (
-    <section className="mt-10 py-3">
+    <section className="mt-auto py-3">
       <Container>
         <div className="md:px-10 flex text-sm">
           <div>© 2024 James Plant</div>

@@ -29,7 +29,7 @@ export default function Home() {
         </linearGradient>
       </svg>
 
-      <Nav />
+      <Nav currentPath="/" />
       <ProfileHeader />
       <Testimonials />
       <Projects />
