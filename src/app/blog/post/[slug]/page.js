@@ -1,8 +1,44 @@
 import Nav from "@/components/common/Nav";
 import Footer from "@/components/sections/Footer";
+import { notFound } from "next/navigation";
 
-export default function BlogPost({ params }) {
+const getBlogPost = async (slug) => {
+  const response = await fetch(
+    "https://api-eu-west-2.hygraph.com/v2/cly38j74i00f307w7tb295z6r/master",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      // next: { revalidate: 3600 },
+      body: JSON.stringify({
+        query: `{
+          blogPost(where: {slug: "${slug}"}) {
+            name
+            publishDate
+            slug
+            summary
+            displayStyle
+          }
+        }
+      `,
+      }),
+    }
+  );
+
+  const { data } = await response.json();
+  return data.blogPost ? data.blogPost : false;
+};
+
+export default async function BlogPost({ params }) {
   const slug = params.slug;
+  const blogPost = await getBlogPost(slug);
+  console.log(blogPost);
+  if (!blogPost) {
+    notFound();
+  }
+
   const jsonLd = {
     "@context": "https://schema.org",
     name: "James Plant | Blog",
@@ -25,7 +61,7 @@ export default function BlogPost({ params }) {
       </svg>
 
       <Nav currentPage="/blog" />
-      <h1>{slug}</h1>
+      <h1>{blogPost.slug}</h1>
       <Footer />
       <script
         type="application/ld+json"

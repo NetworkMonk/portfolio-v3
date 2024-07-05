@@ -4,6 +4,7 @@ import { josefin } from "@/app/fonts";
 import InView from "../animated/InView";
 import Link from "next/link";
 import Pagination from "../common/Pagination";
+import { notFound } from "next/navigation";
 
 const pageSize = 12;
 
@@ -48,11 +49,15 @@ export default async function BlogIndex({ page }) {
   const currentPage = typeof page === "number" ? page : 1;
   const { blogPosts, pageInfo } = await getBlogPosts(currentPage);
 
+  if (blogPosts.length === 0) {
+    notFound();
+  }
+
   const BlogPostCard = ({ blog }) => {
     return (
       <Link
         type="div"
-        href={`/blog/${blog.slug}`}
+        href={`/blog/post/${blog.slug}`}
         className="rounded-lg p-5 bg-brand-platinum bg-opacity-10 hover:bg-opacity-100 hover:text-brand-black transition-all duration-300 in-up flex flex-col"
       >
         <p className="text-2xl tracking-wide min-h-36 mb-5">{blog.name}</p>
