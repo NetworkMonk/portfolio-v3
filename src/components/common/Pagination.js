@@ -1,5 +1,3 @@
-"use client";
-
 import {
   faChevronLeft,
   faChevronRight,
@@ -17,14 +15,14 @@ function Pagination({ total, current, basePath, spread }) {
           <Link
             type="a"
             href={`${basePath}/${current - 1}`}
-            className="pt-4 pr-1 inline-flex items-center text-sm text-gray-500 hover:text-gray-700 cursor-pointer"
+            className="pt-4 pr-1 inline-flex items-center text-sm text-gray-400 hover:text-gray-200 cursor-pointer transition-colors duration-300"
           >
             <FontAwesomeIcon
               icon={faChevronLeft}
               className="fa-fw mr-2"
               aria-hidden="true"
             />
-            Previous
+            Newer
           </Link>
         )}
       </div>
@@ -32,13 +30,13 @@ function Pagination({ total, current, basePath, spread }) {
         {pages.map((page) => (
           <div key={"middle-list-" + page}>
             {page === current - (spread + 1) && current > spread + 2 && (
-              <span className="border-transparent text-gray-500 border-t pt-4 px-4 inline-flex items-center text-sm">
+              <span className="border-transparent text-gray-400 border-t pt-4 px-4 inline-flex items-center text-sm">
                 ...
               </span>
             )}
             {page === current && (
               <a
-                className="border-036-navy text-036-navy font-medium border-t pt-4 px-4 inline-flex items-center text-sm"
+                className="text-gray-200 border-gray-600 font-medium border-t pt-4 px-4 inline-flex items-center text-sm"
                 aria-current="page"
               >
                 {page}
@@ -51,13 +49,13 @@ function Pagination({ total, current, basePath, spread }) {
                 <Link
                   type="a"
                   href={`${basePath}/${page}`}
-                  className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t pt-4 px-4 inline-flex items-center text-sm cursor-pointer"
+                  className="border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-200 border-t pt-4 px-4 inline-flex items-center text-sm cursor-pointer transition-colors duration-300"
                 >
                   {page}
                 </Link>
               )}
             {page === current + spread && current < total - (spread + 1) && (
-              <span className="border-transparent text-gray-500 border-t pt-4 px-4 inline-flex items-center text-sm">
+              <span className="border-transparent text-gray-400 border-t pt-4 px-4 inline-flex items-center text-sm">
                 ...
               </span>
             )}
@@ -69,9 +67,9 @@ function Pagination({ total, current, basePath, spread }) {
           <Link
             type="a"
             href={`${basePath}/${current + 1}`}
-            className="pt-4 pl-1 inline-flex items-center text-sm text-gray-500 hover:text-gray-700 cursor-pointer"
+            className="pt-4 pl-1 inline-flex items-center text-sm text-gray-400 hover:text-gray-200 cursor-pointer transition-colors duration-300"
           >
-            Next
+            Older
             <FontAwesomeIcon
               icon={faChevronRight}
               className="fa-fw ml-2"

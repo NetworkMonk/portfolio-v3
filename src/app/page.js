@@ -17,7 +17,7 @@ export default function Home() {
   };
 
   return (
-    <page>
+    <main>
       <svg
         style={{ width: 0, height: 0, position: "absolute" }}
         aria-hidden="true"
@@ -41,6 +41,6 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </page>
+    </main>
   );
 }

@@ -12,7 +12,7 @@ export default function Blog() {
   };
 
   return (
-    <page className="flex flex-col min-h-screen">
+    <main className="flex flex-col min-h-screen">
       <svg
         style={{ width: 0, height: 0, position: "absolute" }}
         aria-hidden="true"
@@ -31,6 +31,6 @@ export default function Blog() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </page>
+    </main>
   );
 }

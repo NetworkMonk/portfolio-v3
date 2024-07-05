@@ -2,8 +2,8 @@ import Nav from "@/components/common/Nav";
 import BlogIndex from "@/components/sections/BlogIndex";
 import Footer from "@/components/sections/Footer";
 
-export default function Blog({params}) {
-  const page = parseInt(params?.page ? params.page : 1);
+export default function Blog({ params }) {
+  const currentPage = parseInt(params?.page ? params.page : 1);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -14,7 +14,7 @@ export default function Blog({params}) {
   };
 
   return (
-    <page className="flex flex-col min-h-screen">
+    <main className="flex flex-col min-h-screen">
       <svg
         style={{ width: 0, height: 0, position: "absolute" }}
         aria-hidden="true"
@@ -27,12 +27,12 @@ export default function Blog({params}) {
       </svg>
 
       <Nav currentPage="/blog" />
-      <BlogIndex page={page} />
+      <BlogIndex page={currentPage} />
       <Footer />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </page>
+    </main>
   );
 }

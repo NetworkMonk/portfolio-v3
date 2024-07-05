@@ -5,7 +5,7 @@ import InView from "../animated/InView";
 import Link from "next/link";
 import Pagination from "../common/Pagination";
 
-const pageSize = 3;
+const pageSize = 12;
 
 const getBlogPosts = async (page) => {
   const response = await fetch(
@@ -63,32 +63,33 @@ export default async function BlogIndex({ page }) {
   };
 
   return (
-    <Section>
-      <Container>
-        <InView>
-          <div className="md:p-10">
-            <h2
-              className={`${josefin.className} text-3xl tracking-wider in-up-right`}
-              style={{ animationDelay: "0.0s" }}
-            >
-              Blog Posts
-            </h2>
-            <p
-              className="my-5 text-sm in-up-right text-gray-400"
-              style={{ animationDelay: "0.0s" }}
-            >
-              I post a lot about web technologies and development and I post a
-              combination of text and video guides.
-            </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
-              {blogPosts.map((blog, index) => {
-                return (
-                  <BlogPostCard key={blog.slug} blog={blog} index={index} />
-                );
-              })}
+    <section className="flex-1 flex flex-col">
+      <Section>
+        <Container>
+          <InView>
+            <div className="md:p-10">
+              <h2 className={`${josefin.className} text-3xl tracking-wider`}>
+                Blog Posts
+              </h2>
+              <p className="my-5 text-sm text-gray-400">
+                I post a lot about web technologies and development and I post a
+                combination of text and video guides.
+              </p>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+                {blogPosts.map((blog, index) => {
+                  return (
+                    <BlogPostCard key={blog.slug} blog={blog} index={index} />
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <div className="mt-auto">
+            <div className="mt-auto"></div>
+          </InView>
+        </Container>
+      </Section>
+      <section className="mt-auto">
+        <Container>
+          <div className="md:px-10">
             <Pagination
               total={Math.ceil(pageInfo.pageSize / pageSize)}
               current={currentPage}
@@ -96,8 +97,8 @@ export default async function BlogIndex({ page }) {
               spread={1}
             />
           </div>
-        </InView>
-      </Container>
-    </Section>
+        </Container>
+      </section>
+    </section>
   );
 }
