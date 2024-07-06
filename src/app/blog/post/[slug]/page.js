@@ -7,6 +7,8 @@ import { josefin } from "@/app/fonts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { Suspense } from "react";
+import YouTubeEmbed from "@/components/common/YouTubeEmbed";
 
 const getBlogPost = async (slug) => {
   const response = await fetch(
@@ -98,11 +100,18 @@ export default async function BlogPost({ params }) {
             </p>
             {blogPost?.postContent?.html && (
               <div
-                className="my-10 blog-post"
+                className="my-10 blog-post p-10 bg-brand-platinum bg-opacity-10 text-gray-50 rounded-lg"
                 dangerouslySetInnerHTML={{
                   __html: blogPost?.postContent?.html,
                 }}
               ></div>
+            )}
+            {blogPost?.youTubeEmbed && (
+              <div className="youtube-wrapper">
+                <Suspense fallback={<p>Loading video...</p>}>
+                  <YouTubeEmbed src={blogPost.youTubeEmbed} />
+                </Suspense>
+              </div>
             )}
           </div>
         </Container>
