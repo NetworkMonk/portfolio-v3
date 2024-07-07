@@ -5,7 +5,7 @@ import Footer from "@/components/sections/Footer";
 import { notFound } from "next/navigation";
 import { josefin } from "@/app/fonts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { Suspense } from "react";
 import YouTubeEmbed from "@/components/common/YouTubeEmbed";
@@ -23,6 +23,7 @@ const getBlogPost = async (slug) => {
       body: JSON.stringify({
         query: `{
           blogPost(where: {slug: "${slug}"}) {
+            id
             name
             publishDate
             slug
@@ -46,13 +47,44 @@ const getBlogPost = async (slug) => {
   return data.blogPost ? data.blogPost : false;
 };
 
+const getSiblingPost = async (id, direction) => {
+  const response = await fetch(
+    "https://api-eu-west-2.hygraph.com/v2/cly38j74i00f307w7tb295z6r/master",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      // next: { revalidate: 3600 },
+      body: JSON.stringify({
+        query: `{
+          blogPosts(${direction < 0 ? "before" : "after"}: "${id}", ${
+          direction < 0 ? "last" : "first"
+        }: 1) {
+            name
+            slug
+          }
+        }
+      `,
+      }),
+    }
+  );
+
+  const { data } = await response.json();
+  return data.blogPosts.length > 0 ? data.blogPosts[0] : false;
+};
+
 export default async function BlogPost({ params }) {
   const slug = params.slug;
   const blogPost = await getBlogPost(slug);
-  console.log(blogPost);
   if (!blogPost) {
     notFound();
   }
+
+  // Get sibling posts for next / prev direction links.
+  const prevPost = await getSiblingPost(blogPost.id, -1);
+  const nextPost = await getSiblingPost(blogPost.id, 1);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -98,21 +130,67 @@ export default async function BlogPost({ params }) {
             <p className="text-sm text-gray-400">
               {new Date(blogPost.publishDate).toLocaleDateString()}
             </p>
-            {blogPost?.postContent?.html && (
-              <div
-                className="my-10 blog-post p-10 bg-brand-platinum bg-opacity-10 text-gray-50 rounded-lg"
-                dangerouslySetInnerHTML={{
-                  __html: blogPost?.postContent?.html,
-                }}
-              ></div>
-            )}
-            {blogPost?.youTubeEmbed && (
-              <div className="youtube-wrapper">
-                <Suspense fallback={<p>Loading video...</p>}>
-                  <YouTubeEmbed src={blogPost.youTubeEmbed} />
-                </Suspense>
+            <div className="my-10 p-10 bg-brand-platinum bg-opacity-10 text-gray-50 rounded-lg">
+              {blogPost?.postContent?.html && (
+                <div
+                  className="blog-post"
+                  dangerouslySetInnerHTML={{
+                    __html: blogPost?.postContent?.html,
+                  }}
+                ></div>
+              )}
+              {blogPost?.youTubeEmbed && (
+                <div className="youtube-wrapper mt-10">
+                  <Suspense fallback={<p>Loading video...</p>}>
+                    <YouTubeEmbed src={blogPost.youTubeEmbed} />
+                  </Suspense>
+                </div>
+              )}
+            </div>
+            <div className="flex w-100">
+              <div className="text-left">
+                {prevPost && (
+                  <Link
+                    type="a"
+                    href={`/blog/post/${prevPost.slug}`}
+                    className="text-gray-400 hover:text-gray-200 cursor-pointer transition-colors duration-300"
+                  >
+                    <div className="flex">
+                      <div className="content-start">
+                        <FontAwesomeIcon
+                          icon={faArrowLeft}
+                          className="inline-block w-4 h-4 mr-3 mt-1"
+                        />
+                      </div>
+                      <div className="inline-block max-w-52">
+                        {prevPost.name}{" "}
+                      </div>
+                    </div>
+                  </Link>
+                )}
               </div>
-            )}
+              <div className="text-right ml-auto">
+                {nextPost && (
+                  <Link
+                    type="a"
+                    href={`/blog/post/${nextPost.slug}`}
+                    className="text-gray-400 hover:text-gray-200 cursor-pointer transition-colors duration-300"
+                  >
+                    <div className="flex">
+                      <div className="inline-block max-w-52">
+                        {nextPost.name}{" "}
+                      </div>
+                      <div className="content-start">
+                        <FontAwesomeIcon
+                          icon={faArrowRight}
+                          className="inline-block w-4 h-4 ml-3 mt-1"
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
