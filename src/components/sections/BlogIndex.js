@@ -5,6 +5,7 @@ import InView from "../animated/InView";
 import Link from "next/link";
 import Pagination from "../common/Pagination";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 const pageSize = 12;
 
@@ -20,12 +21,17 @@ const getBlogPosts = async (page) => {
       // next: { revalidate: 3600 },
       body: JSON.stringify({
         query: `{
-          blogPosts(first: ${pageSize}, skip: ${(page - 1) * pageSize}) {
+          blogPosts(first: ${pageSize}, skip: ${
+          (page - 1) * pageSize
+        }, orderBy: publishDate_DESC) {
             slug
             name
             displayStyle
             summary
             publishDate
+            thumbnailImage {
+              url
+            }
           }
           blogPostsConnection() {
             pageInfo {
@@ -55,15 +61,28 @@ export default async function BlogIndex({ page }) {
 
   const BlogPostCard = ({ blog }) => {
     return (
-      <Link
-        type="div"
-        href={`/blog/post/${blog.slug}`}
-        className="rounded-lg p-5 bg-brand-platinum bg-opacity-10 hover:bg-opacity-100 hover:text-brand-black transition-all duration-300 in-up flex flex-col"
-      >
-        <p className="text-2xl tracking-wide min-h-36 mb-5">{blog.name}</p>
-        <p className="text-sm mt-auto mb-5">{blog.summary}</p>
-        <p className="text-right text-sm text-gray-400">{new Date(blog.publishDate).toLocaleDateString()}</p>
-      </Link>
+      <div className="rounded-lg bg-brand-platinum bg-opacity-10 hover:bg-opacity-100 hover:text-brand-black transition-all duration-300 in-up relative overflow-hidden group">
+        {blog?.thumbnailImage?.url && (
+          <Image
+            width="300"
+            height="300"
+            src={blog.thumbnailImage.url}
+            alt={blog.name}
+            className="w-full h-full object-cover absolute -z-10 opacity-40 group-hover:opacity-15 pointer-events-none transition-opacity duration-300"
+          />
+        )}
+        <Link
+          type="div"
+          href={`/blog/post/${blog.slug}`}
+          className="p-5 flex flex-col"
+        >
+          <p className="text-2xl tracking-wide min-h-36 mb-5">{blog.name}</p>
+          <p className="text-sm mt-auto mb-5">{blog.summary}</p>
+          <p className="text-right text-sm text-gray-400 group-hover:text-gray-800 transition-colors duration-300">
+            {new Date(blog.publishDate).toLocaleDateString()}
+          </p>
+        </Link>
+      </div>
     );
   };
 

@@ -9,6 +9,7 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { Suspense } from "react";
 import YouTubeEmbed from "@/components/common/YouTubeEmbed";
+import Image from "next/image";
 
 const getBlogPost = async (slug) => {
   const response = await fetch(
@@ -61,7 +62,7 @@ const getSiblingPost = async (id, direction) => {
         query: `{
           blogPosts(${direction < 0 ? "before" : "after"}: "${id}", ${
           direction < 0 ? "last" : "first"
-        }: 1) {
+        }: 1, orderBy: publishDate_DESC) {
             name
             slug
           }
@@ -124,13 +125,28 @@ export default async function BlogPost({ params }) {
                 Back to blog
               </Link>
             </div>
-            <h1 className={`${josefin.className} text-3xl tracking-wider`}>
-              {blogPost.name}
-            </h1>
-            <p className="text-sm text-gray-400">
-              {new Date(blogPost.publishDate).toLocaleDateString()}
-            </p>
-            <div className="my-10 p-10 bg-brand-platinum bg-opacity-10 text-gray-50 rounded-lg">
+            <div className="sm:flex gap-5">
+              <div className="content-end">
+                <h1 className={`${josefin.className} text-3xl tracking-wider`}>
+                  {blogPost.name}
+                </h1>
+                <p className="text-sm text-gray-400">
+                  {new Date(blogPost.publishDate).toLocaleDateString()}
+                </p>
+              </div>
+              {blogPost?.thumbnailImage?.url && (
+                <div className="ml-auto">
+                  <Image
+                    src={blogPost.thumbnailImage.url}
+                    width="500"
+                    height="500"
+                    alt={blogPost.name}
+                    className="w-full sm:max-w-64 rounded-lg my-5 sm:my-0 max-h-64 object-cover"
+                  />
+                </div>
+              )}
+            </div>
+            <div className="my-10 px-5 py-2 sm:px-10 sm:py-5 bg-brand-platinum bg-opacity-10 text-gray-50 rounded-lg">
               {blogPost?.postContent?.html && (
                 <div
                   className="blog-post"
