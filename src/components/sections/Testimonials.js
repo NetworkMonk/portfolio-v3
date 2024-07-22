@@ -92,7 +92,10 @@ export default async function Testimonials() {
                           <div>
                             <p>{review.author}</p>
                             <p className="text-xs text-gray-400 font-medium">
-                              {review.position} - {review.company}
+                              {review.position}
+                              {review.company && review.company !== "" && (
+                                <>{` - ${review.company}`}</>
+                              )}
                             </p>
                           </div>
                         </div>
