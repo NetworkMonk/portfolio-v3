@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProfileHeader() {
+  const cvUrl = process.env.NEXT_PUBLIC_CV_URL;
+
   return (
     <div id="home">
       <Section>
@@ -81,7 +83,7 @@ export default function ProfileHeader() {
                             Let&apos;s talk
                           </button>
                           <a
-                            href="https://eu-west-2.graphassets.com/cly38j7gjn7aw07l8dd2x8xpm/cly61vmzd1c7h07mm2ozslvrz?dl=true&_gl=1*1s0zcn0*_gcl_aw*R0NMLjE3MTk4NzEwNjAuQ2p3S0NBandwNG0wQmhCQUVpd0FzZGM0YUZGeUpFM3VMWjd1RXoyM21aVEs4WXRYbjM3bmxFYk5OLW0waHZybm5FeTlpdHFkN3IzT1VSb0NzMUVRQXZEX0J3RQ..*_gcl_au*MjQ1NjQ1ODU5LjE3MTk4NzEwNjA.*_ga*MTM4MjQ2MTIzOC4xNzE5ODcxMDYw*_ga_G6FYGSYGZ4*MTcyMDAyMzQxNC4zLjEuMTcyMDAyMzczOC42MC4wLjA."
+                            href={cvUrl}
                             className="ml-3 bg-gradient-to-br from-zinc-400 to-zinc-600 text-white rounded px-5 py-3 hover:opacity-75 transition-opacity duration-300 inline-block"
                           >
                             <FontAwesomeIcon
