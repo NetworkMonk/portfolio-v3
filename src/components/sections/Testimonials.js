@@ -46,13 +46,12 @@ export default async function Testimonials() {
             <InView>
               <h2
                 className={`${josefin.className} text-3xl tracking-wider in-up-right`}
-                style={{ animationDelay: "0.5s" }}
               >
                 Testimonials
               </h2>
               <p
                 className="my-5 text-sm in-up-right text-gray-400"
-                style={{ animationDelay: "1s" }}
+                style={{ animationDelay: "0.25s" }}
               >
                 I&apos;ve worked with some amazing people throughout my career.
                 I&apos;m incredibly grateful for the following recommendations.
@@ -63,7 +62,7 @@ export default async function Testimonials() {
                     <div key={reviewIndex} className="lg:w-1/3 p-3">
                       <figure
                         className="bg-brand-platinum rounded-lg p-5 bg-opacity-5 h-full flex flex-col in-up"
-                        style={{ animationDelay: `${reviewIndex / 3 + 2}s` }}
+                        style={{ animationDelay: `${reviewIndex / 6 + 0.5}s` }}
                       >
                         <blockquote className="flex-1">
                           <svg

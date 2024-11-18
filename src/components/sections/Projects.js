@@ -60,35 +60,30 @@ export default async function Projects() {
             <InView>
               <h2
                 className={`${josefin.className} text-3xl tracking-wider in-up-right`}
-                style={{ animationDelay: "0.5s" }}
               >
                 Projects
               </h2>
               <p
                 className="my-5 text-sm in-up-right text-gray-400"
-                style={{ animationDelay: "1s" }}
               >
                 Some of the projects I&apos;ve had the pleasure of being a part
                 of during my 20 years in technology.
               </p>
-            </InView>
-            <div className="flex flex-col gap-10 mt-10">
-              {projects
-                .sort((a, b) => a.displayOrder - b.displayOrder)
-                .map((project, projectIndex) => {
-                  const backgroundGradient = Object.keys(backgrounds).find(
-                    (backgroundKey) => backgroundKey === project.background
-                  );
-                  return (
-                    <div key={projectIndex}>
-                      <InView>
+              <div className="flex flex-col gap-10 mt-10">
+                {projects
+                  .sort((a, b) => a.displayOrder - b.displayOrder)
+                  .map((project, projectIndex) => {
+                    const backgroundGradient = Object.keys(backgrounds).find(
+                      (backgroundKey) => backgroundKey === project.background
+                    );
+                    return (
+                      <div key={projectIndex}>
                         <div
                           className={`rounded-xl shadow-xl bg-black p-5 flex flex-col md:flex-row in-up-right md:min-h-[400px] relative overflow-hidden ${
                             backgrounds[backgroundGradient]
                               ? backgrounds[backgroundGradient]
                               : backgrounds["green-teal"]
                           }`}
-                          style={{ animationDelay: "0.5s" }}
                         >
                           <div className="max-w-xl flex flex-col p-3 md:p-10 md:order-2">
                             <h3
@@ -151,11 +146,11 @@ export default async function Projects() {
                             </div>
                           )}
                         </div>
-                      </InView>
-                    </div>
-                  );
-                })}
-            </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </InView>
           </div>
         </Container>
       </Section>

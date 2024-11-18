@@ -40,13 +40,12 @@ export default async function Technologies() {
             <div className="md:p-10">
               <h2
                 className={`${josefin.className} text-3xl tracking-wider in-up-right`}
-                style={{ animationDelay: "0.5s" }}
               >
                 Technologies
               </h2>
               <p
                 className="my-5 text-sm in-up-right text-gray-400"
-                style={{ animationDelay: "1s" }}
+                style={{ animationDelay: "0.25s" }}
               >
                 I have experience working with all the following technologies.
                 <br />
@@ -62,7 +61,7 @@ export default async function Technologies() {
                       <div
                         key={index}
                         className="bg-brand-platinum bg-opacity-15 hover:bg-opacity-100 text-gray-100 hover:text-gray-900 rounded p-3 text-sm font-medium tracking-widest cursor-default transition-colors duration-300 group in-up"
-                        style={{ animationDelay: `${index / 6 + 2}s` }}
+                        style={{ animationDelay: `${index / 16 + 0.5}s` }}
                       >
                         <span className="inline-block rounded-full h-2.5 w-2.5 mr-2.5 bg-teal-400 group-hover:bg-brand-orange transition-colors duration-300"></span>
                         {skill.name}

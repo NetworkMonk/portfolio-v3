@@ -35,13 +35,12 @@ export default function LetsTalk() {
             <div className="md:p-10">
               <h2
                 className={`${josefin.className} text-3xl tracking-wider in-up-right`}
-                style={{ animationDelay: "0.5s" }}
               >
                 Let&apos;s Talk
               </h2>
               <p
                 className="my-5 text-sm in-up-right text-gray-400"
-                style={{ animationDelay: "1s" }}
+                style={{ animationDelay: "0.25s" }}
               >
                 Let&apos;s discuss your next project! You can reach me using any
                 of the methods below.
@@ -54,7 +53,7 @@ export default function LetsTalk() {
                       href={contact.link}
                       rel="noreferrer"
                       className="rounded-lg p-5 bg-brand-platinum bg-opacity-15 hover:bg-opacity-100 hover:text-brand-black transition-all duration-300 in-up flex"
-                      style={{ animationDelay: `${index / 4 + 2}s` }}
+                      style={{ animationDelay: `${index / 8 + 0.5}s` }}
                     >
                       <FontAwesomeIcon
                         icon={contact.icon}

@@ -41,13 +41,12 @@ export default async function Achievements() {
             <div className="md:p-10">
               <h2
                 className={`${josefin.className} text-3xl tracking-wider in-up-right`}
-                style={{ animationDelay: "0.5s" }}
               >
                 Achievements
               </h2>
               <p
                 className="my-5 text-sm in-up-right text-gray-400"
-                style={{ animationDelay: "1s" }}
+                style={{ animationDelay: "0.25s" }}
               >
                 In addition to all of my public projects above, I have worked on
                 many other bespoke applications and business projects.
@@ -60,7 +59,7 @@ export default async function Achievements() {
                       <div
                         key={aIndex}
                         className="in-up-right"
-                        style={{ animationDelay: `${aIndex / 4 + 2}s` }}
+                        style={{ animationDelay: `0.5s` }}
                       >
                         <div>
                           <h4
