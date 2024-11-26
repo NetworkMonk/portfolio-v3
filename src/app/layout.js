@@ -1,6 +1,7 @@
 import { GoogleTagManager } from "@next/third-parties/google";
 import { montserrat } from "./fonts";
 import "./globals.css";
+import { ConsentForm } from "@/components/cookie-consent/ConsentForm";
 
 export const metadata = {
   title: "James Plant",
@@ -11,8 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} min-h-screen`}>{children}</body>
-      <GoogleTagManager gtmId="GTM-K56Z935N" />
+      <body className={`${montserrat.className} min-h-screen`}>
+        {children}
+        <ConsentForm />
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+      </body>
     </html>
   );
 }

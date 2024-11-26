@@ -63,7 +63,7 @@ export function Customise({ onSet, defaultValues }) {
             {cookieCategories.map((category, categoryIndex) => (
               <div key={categoryIndex}>
                 <div className="flex items-center justify-center mb-3">
-                  <p className="font-bold text-lg">{category.title}</p>
+                  <p className="font-bold text-black text-lg">{category.title}</p>
                   <div className="ml-auto">
                     <Toggle
                       disabled={category.mandatory}
@@ -77,7 +77,7 @@ export function Customise({ onSet, defaultValues }) {
                     />
                   </div>
                 </div>
-                <p className="text-sm mt-3">{category.description}</p>
+                <p className="text-sm mt-3 text-gray-800">{category.description}</p>
                 <hr className="bg-gray-300 my-5" />
               </div>
             ))}

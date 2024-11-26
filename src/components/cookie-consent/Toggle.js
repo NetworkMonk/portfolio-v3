@@ -8,7 +8,7 @@ export default function Toggle({ disabled, onChange, checked }) {
       disabled={disabled}
       checked={checked}
       onChange={onChange}
-      className={`group relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200 ease-in-out focus:outline-none data-[checked]:bg-brand-blue ${
+      className={`group relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200 ease-in-out focus:outline-none data-[checked]:bg-brand-orange ${
         disabled ? "opacity-50" : ""
       }`}
     >
