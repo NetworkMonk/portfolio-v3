@@ -48,6 +48,7 @@ export default async function Projects() {
     "purple-violet": "bg-gradient-to-br from-purple-300 to-violet-600",
     "cyan-lime": "bg-gradient-to-br from-cyan-300 to-lime-600",
     "indigo-slate": "bg-gradient-to-br from-indigo-300 to-slate-600",
+    "red-rose": "bg-gradient-to-br from-red-300 to-rose-600",
   };
 
   const projects = await getProjects();
@@ -63,13 +64,11 @@ export default async function Projects() {
               >
                 Projects
               </h2>
-              <p
-                className="my-5 text-sm in-up-right text-gray-400"
-              >
+              <p className="my-5 text-sm in-up-right text-gray-400">
                 Some of the projects I&apos;ve had the pleasure of being a part
                 of during my 20 years in technology.
               </p>
-              <div className="flex flex-col gap-10 mt-10">
+              <div className="grid md:grid-cols-2 gap-10 mt-10">
                 {projects
                   .sort((a, b) => a.displayOrder - b.displayOrder)
                   .map((project, projectIndex) => {
@@ -77,15 +76,15 @@ export default async function Projects() {
                       (backgroundKey) => backgroundKey === project.background
                     );
                     return (
-                      <div key={projectIndex}>
+                      <div key={projectIndex} className="h-full flex flex-col">
                         <div
-                          className={`rounded-xl shadow-xl bg-black p-5 flex flex-col md:flex-row in-up-right md:min-h-[400px] relative overflow-hidden ${
+                          className={`rounded-xl shadow-xl h-full bg-black p-5 flex flex-col in-up-right md:min-h-[400px] relative overflow-hidden ${
                             backgrounds[backgroundGradient]
                               ? backgrounds[backgroundGradient]
                               : backgrounds["green-teal"]
                           }`}
                         >
-                          <div className="max-w-xl flex flex-col p-3 md:p-10 md:order-2">
+                          <div className="max-w-xl flex flex-col p-3 md:p-10">
                             <h3
                               className={`${josefin.className} text-4xl font-semibold uppercase tracking-wide`}
                             >
@@ -114,7 +113,7 @@ export default async function Projects() {
                               })}
                             </div>
                           </div>
-                          <div className="flex-1 mt-auto p-3 md:p-10 md:order-1">
+                          <div className="flex-1 mt-auto p-3 md:p-10">
                             {project.link && project.link !== "" && (
                               <a
                                 href={project.link}
@@ -134,8 +133,8 @@ export default async function Projects() {
                               <Image
                                 src={project.image.url}
                                 alt={project.name}
-                                width="1000"
-                                height="1000"
+                                width="1200"
+                                height="720"
                                 className="object-cover w-full h-full opacity-10"
                                 style={{
                                   transform:
