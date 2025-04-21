@@ -44,8 +44,8 @@ export default function ProfileHeader() {
                           className="text-4xl font-semibold tracking-wide mt-10 in-up-right"
                           style={{ animationDelay: "0.5s" }}
                         >
-                          A full stack web application developer and technology
-                          leader.
+                          A Senior Full-Stack Developer Specializing in Shopify
+                          & Next.js for UK E-commerce.
                         </h2>
                         <div
                           className="flex flex-col md:flex-row gap-5 mt-10 in-up-right"
@@ -60,11 +60,11 @@ export default function ProfileHeader() {
                             >
                               <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
                             </svg>
-                            Based in Essex
+                            Based in Essex, UK
                           </h3>
                           <h3>
                             <span className="h-3 w-3 mr-1.5 inline-block rounded-full bg-gradient-to-br from-teal-200 to-brand-teal"></span>
-                            Looking for New Opportunities
+                            Open for New Opportunities
                           </h3>
                         </div>
                         <div
@@ -83,14 +83,14 @@ export default function ProfileHeader() {
                             Let&apos;s talk
                           </button>
                           <a
-                            href={cvUrl}
-                            className="ml-3 bg-gradient-to-br from-zinc-400 to-zinc-600 text-white rounded px-5 py-3 hover:opacity-75 transition-opacity duration-300 inline-block"
+                            href="https://thebeardeddeveloper.co.uk"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="ml-3"
                           >
-                            <FontAwesomeIcon
-                              icon={faDownload}
-                              className="mr-3 w-4 h-4"
-                            />
-                            Download my CV
+                            <button className="bg-gradient-to-br from-zinc-400 to-zinc-600 text-white rounded px-5 py-3 hover:opacity-75 transition-opacity duration-300">
+                              Hire Me
+                            </button>
                           </a>
                         </div>
                       </div>
