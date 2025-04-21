@@ -12,7 +12,7 @@ export default function Footer() {
     <section className="mt-10 py-3">
       <Container>
         <div className="md:px-10 flex text-sm">
-          <div>© 2024 James Plant</div>
+          <div>© 2025 James Plant</div>
           <div className="ml-auto flex gap-4">
             <a
               href="https://www.linkedin.com/in/james-plant-7ab317b/"
@@ -29,25 +29,31 @@ export default function Footer() {
               rel="noreferrer"
               title="Linkedin"
             >
-<FontAwesomeIcon icon={faGithub} className="inline-block w-6 h-6" /></a>
-<a
+              <FontAwesomeIcon
+                icon={faGithub}
+                className="inline-block w-6 h-6"
+              />
+            </a>
+            <a
               href="https://www.instagram.com/networkmonkey/"
               rel="noreferrer"
               title="Linkedin"
             >
-<FontAwesomeIcon
-              icon={faInstagram}
-              className="inline-block w-6 h-6"
-            /></a>
-                        <a
+              <FontAwesomeIcon
+                icon={faInstagram}
+                className="inline-block w-6 h-6"
+              />
+            </a>
+            <a
               href="https://www.facebook.com/james.plant.31/"
               rel="noreferrer"
               title="Linkedin"
             >
-<FontAwesomeIcon
-              icon={faFacebook}
-              className="inline-block w-6 h-6"
-            /></a>
+              <FontAwesomeIcon
+                icon={faFacebook}
+                className="inline-block w-6 h-6"
+              />
+            </a>
           </div>
         </div>
       </Container>
