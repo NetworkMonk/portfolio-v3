@@ -10,10 +10,10 @@ import Testimonials from "@/components/sections/Testimonials";
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
-    name: "James Plant | Portfolio",
+    name: "James Plant | UK-Based Freelance Shopify, E-Commerce & Bespoke Web Application Developer",
     image: "https://jamesplant.me/img/james-plant.png",
     description:
-      "An experienced full stack web application developer and technology leader. 20 years in the world of technology. Available for work.",
+      "UK-based freelance developer with 20+ years of experience building Shopify stores, e-commerce solutions, and bespoke web applications. Expert in Next.js, React, and modern web technologies, delivering tailored solutions for businesses.",
   };
 
   return (

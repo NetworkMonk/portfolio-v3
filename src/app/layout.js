@@ -4,9 +4,10 @@ import "./globals.css";
 import { ConsentForm } from "@/components/cookie-consent/ConsentForm";
 
 export const metadata = {
-  title: "James Plant",
+  title:
+    "James Plant | UK-Based Freelance Shopify, E-Commerce & Bespoke Web Application Developer",
   description:
-    "Welcome to my portfolio! I'm a web application developer and technology leader. Based in and around Essex, please check out my work and reach out to me if you have any questions.",
+    "UK-based freelance developer with 20+ years of experience building Shopify stores, e-commerce solutions, and bespoke web applications. Expert in Next.js, React, and modern web technologies, delivering tailored solutions for businesses.",
 };
 
 export default function RootLayout({ children }) {
